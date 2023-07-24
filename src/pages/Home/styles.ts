@@ -1,11 +1,6 @@
 import styled from 'styled-components'
 
 export const HomeContainer = styled.main`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5.75rem 0;
-
   h1 {
     font-family: ${(props) => props.theme.fonts.title};
     font-size: ${(props) => props.theme.text['title-xl']};
@@ -14,6 +9,13 @@ export const HomeContainer = styled.main`
     line-height: 130%;
     margin-bottom: 1rem;
   }
+`
+
+export const MainContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5.75rem 0;
 `
 
 export const BoxText = styled.div`

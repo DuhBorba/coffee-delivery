@@ -37,9 +37,13 @@ export const HeaderButton = styled.button<HeaderButtonProps>`
   padding: 0.5rem;
   border: none;
   border-radius: 8px;
-  font-size: ${(props) => props.theme.text['text-regular-s']};
+  font-size: ${(props) => props.theme.text['regular-s']};
 
   background: ${(props) => props.theme.colors[`${props.variant}-light`]};
+
+  &:focus {
+    box-shadow: 0 0 0 2px ${(props) => props.theme.colors[`${props.variant}`]};
+  }
 
   svg {
     color: ${(props) => props.theme.colors[props.variant]};
