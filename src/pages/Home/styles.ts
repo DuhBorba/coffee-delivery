@@ -16,6 +16,10 @@ export const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: 5.75rem 0;
+
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
 `
 
 export const BoxText = styled.div`
@@ -30,6 +34,9 @@ export const BoxImage = styled.div`
   flex-basis: 0; */
   flex: 1 0 0;
   text-align: center;
+  img {
+    width: 100%;
+  }
 `
 
 export const Topics = styled.div`
