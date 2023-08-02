@@ -9,7 +9,7 @@ import {
   Topics,
 } from './styles'
 import { TextRegular } from '../../components/Typography'
-import { OurCoffees } from '../../components/OurCoffees'
+import { OurCoffees } from './components/OurCoffees'
 
 export const Home = () => {
   return (

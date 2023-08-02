@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { coffees } from '../../coffees'
+import { coffees } from '../../../../coffees'
 import { OurCoffeeContainer } from './styles'
-import { TextTitle } from '../Typography'
+import { TextTitle } from '../../../../components/Typography'
 import { Card } from '../Card'
 
 export const OurCoffees = () => {
