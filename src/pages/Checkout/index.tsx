@@ -7,8 +7,10 @@ import {
 } from '@phosphor-icons/react'
 import { TextRegular, TextTitle } from '../../components/Typography'
 import {
+  BoxButtonPayment,
   BoxConfirm,
   BoxForm,
+  ButtonPayment,
   CardConfirm,
   CardForm,
   CardPayment,
@@ -82,18 +84,20 @@ export const Checkout = () => {
               </TextRegular>
             </div>
           </SubtitleIcon>
-          <button>
-            <CreditCard size={16} />
-            Cartão de crédito
-          </button>
-          <button>
-            <Bank size={16} />
-            Cartão de débito
-          </button>
-          <button>
-            <Money size={16} />
-            Dinheiro
-          </button>
+          <BoxButtonPayment>
+            <ButtonPayment>
+              <CreditCard size={16} />
+              Cartão de crédito
+            </ButtonPayment>
+            <ButtonPayment>
+              <Bank size={16} />
+              Cartão de débito
+            </ButtonPayment>
+            <ButtonPayment>
+              <Money size={16} />
+              Dinheiro
+            </ButtonPayment>
+          </BoxButtonPayment>
         </CardPayment>
       </BoxForm>
       <BoxConfirm>
