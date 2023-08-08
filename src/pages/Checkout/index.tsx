@@ -3,22 +3,35 @@ import {
   CreditCard,
   CurrencyDollar,
   MapPinLine,
+  Minus,
   Money,
+  Plus,
+  Trash,
 } from '@phosphor-icons/react'
 import { TextRegular, TextTitle } from '../../components/Typography'
 import {
   BoxButtonPayment,
   BoxConfirm,
   BoxForm,
+  BoxImageCoffee,
+  BoxIncrementRemove,
+  BoxRemove,
+  BoxTotal,
+  ButtonConfirm,
   ButtonPayment,
+  ButtonRemove,
   CardConfirm,
   CardForm,
   CardPayment,
   CheckoutContainer,
+  CoffeeCard,
   FormInputs,
   InputBox,
+  Line,
   SubtitleIcon,
 } from './styles'
+
+import Americano from '../../assets/images/americano.svg'
 
 export const Checkout = () => {
   return (
@@ -33,7 +46,9 @@ export const Checkout = () => {
               <MapPinLine size={22} />
             </div>
             <div>
-              <TextRegular color="subtitle">Endereço de Entrega</TextRegular>
+              <TextRegular color="base-subtitle">
+                Endereço de Entrega
+              </TextRegular>
               <TextRegular size="s">
                 Informe o endereço onde deseja receber seu pedido
               </TextRegular>
@@ -78,7 +93,7 @@ export const Checkout = () => {
               <CurrencyDollar size={22} />
             </div>
             <div>
-              <TextRegular color="subtitle">Pagamento</TextRegular>
+              <TextRegular color="base-subtitle">Pagamento</TextRegular>
               <TextRegular size="s">
                 O pagamento é feito na entrega. Escolha a forma que deseja pagar
               </TextRegular>
@@ -105,43 +120,65 @@ export const Checkout = () => {
           Cafés selecionados
         </TextTitle>
         <CardConfirm>
-          <div>
+          <CoffeeCard>
+            <BoxImageCoffee>
+              <img src={Americano} alt="" />
+            </BoxImageCoffee>
             <div>
-              <img src="" alt="" />
+              <div>
+                <TextRegular>Expresso Tradicional</TextRegular>
+              </div>
+              <BoxRemove>
+                <BoxIncrementRemove>
+                  <button>
+                    <Minus size={14} weight="bold" />
+                  </button>
+                  <input type="number" value={1} />
+                  <button>
+                    <Plus size={14} weight="bold" />
+                  </button>
+                </BoxIncrementRemove>
+                <ButtonRemove>
+                  <Trash size={16} /> Remover
+                </ButtonRemove>
+              </BoxRemove>
             </div>
-            <div>
-              <p>Expresso Tradicional</p>
-            </div>
-            <div>
+            <TextRegular weight={700}>
               <p>R$ 9,90</p>
-            </div>
-          </div>
+            </TextRegular>
+          </CoffeeCard>
 
-          <div>
+          <Line />
+
+          <BoxTotal>
             <div>
-              <p>Total de itens</p>
+              <TextRegular size="s">Total de itens</TextRegular>
             </div>
             <div>
-              <p>R$ 29,70</p>
+              <TextRegular>R$ 29,70</TextRegular>
             </div>
-          </div>
-          <div>
+          </BoxTotal>
+          <BoxTotal>
             <div>
-              <p>Entrega</p>
-            </div>
-            <div>
-              <p>R$ 3,50</p>
-            </div>
-          </div>
-          <div>
-            <div>
-              <p>Total</p>
+              <TextRegular size="s">Entrega</TextRegular>
             </div>
             <div>
-              <p>R$ 33,20</p>
+              <TextRegular>R$ 3,50</TextRegular>
             </div>
-          </div>
-          <button>Confirmar Pedido</button>
+          </BoxTotal>
+          <BoxTotal>
+            <div>
+              <TextRegular size="l" weight={700}>
+                Total
+              </TextRegular>
+            </div>
+            <div>
+              <TextRegular size="l" weight={700}>
+                R$ 33,20
+              </TextRegular>
+            </div>
+          </BoxTotal>
+          <ButtonConfirm>Confirmar Pedido</ButtonConfirm>
         </CardConfirm>
       </BoxConfirm>
     </CheckoutContainer>

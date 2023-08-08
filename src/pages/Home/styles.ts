@@ -51,10 +51,6 @@ export const Topics = styled.div`
     width: 50%;
     margin-bottom: 1.75rem;
   }
-
-  svg {
-    color: ${(props) => props.theme.colors.background};
-  }
 `
 
 interface IconProps {
@@ -76,4 +72,10 @@ export const IconsContainer = styled.span<IconProps>`
   border-radius: 50%;
   margin-right: 0.75rem;
   background: ${(props) => props.theme.colors[COLORS_ICON[props.variant]]};
+  height: 2rem;
+  width: 2rem;
+
+  svg {
+    color: ${(props) => props.theme.colors.background};
+  }
 `

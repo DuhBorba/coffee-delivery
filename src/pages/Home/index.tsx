@@ -18,7 +18,7 @@ export const Home = () => {
         <MainContainer>
           <BoxText>
             <h1>Encontre o café perfeito para qualquer hora do dia</h1>
-            <TextRegular size="l" color="subtitle">
+            <TextRegular size="l" color="base-subtitle">
               Com o Coffee Delivery você recebe seu café onde estiver, a
               qualquer hora
             </TextRegular>
