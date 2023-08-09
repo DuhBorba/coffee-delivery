@@ -25,6 +25,18 @@ export interface Coffee {
 }
 
 export const Card = ({ coffee }: Coffee) => {
+  const [quantity, setQuantity] = React.useState(1)
+
+  function handleIncrease() {
+    setQuantity((state) => state + 1)
+  }
+
+  function handleDecrease() {
+    if (quantity > 1) {
+      setQuantity((state) => state - 1)
+    }
+  }
+
   return (
     <CardContainer>
       <img src={`/images/${coffee.image}`} alt="" />
@@ -41,11 +53,11 @@ export const Card = ({ coffee }: Coffee) => {
           {coffee.price}
         </p>
         <BoxIncrement>
-          <button>
+          <button onClick={handleDecrease}>
             <Minus size={14} weight="bold" />
           </button>
-          <input type="number" value={1} />
-          <button>
+          <input type="number" value={quantity} readOnly />
+          <button onClick={handleIncrease}>
             <Plus size={14} weight="bold" />
           </button>
         </BoxIncrement>
