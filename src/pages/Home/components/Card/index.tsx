@@ -11,6 +11,7 @@ import {
   TagCoffee,
 } from './styles'
 import { ButtonIncrement } from '../../../../components/ButtonIncrement'
+import { useCart } from '../../../../hooks/useCart'
 
 export interface Coffee {
   id: number
@@ -38,6 +39,17 @@ export const Card = ({ coffee }: CoffeeProps) => {
     }
   }
 
+  const { addCoffeeToCart } = useCart()
+
+  function handleAddToCart() {
+    const coffeeToAdd = {
+      ...coffee,
+      quantity,
+    }
+
+    addCoffeeToCart(coffeeToAdd)
+  }
+
   return (
     <CardContainer>
       <img src={`/images/${coffee.image}`} alt="" />
@@ -58,7 +70,7 @@ export const Card = ({ coffee }: CoffeeProps) => {
           onDecrease={handleDecrease}
           quantity={quantity}
         />
-        <ButtonCart>
+        <ButtonCart onClick={handleAddToCart}>
           <ShoppingCart size={22} weight="fill" />
         </ButtonCart>
       </BoxPrice>

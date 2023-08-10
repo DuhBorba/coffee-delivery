@@ -6,8 +6,11 @@ import {
 } from './styles'
 import Logo from '../../assets/images/logo.svg'
 import { MapPin, ShoppingCart } from '@phosphor-icons/react'
+import { useCart } from '../../hooks/useCart'
 
 export const Header = () => {
+  const { cartQuantity } = useCart()
+
   return (
     <HeaderContainer>
       <nav>
@@ -21,7 +24,7 @@ export const Header = () => {
           </HeaderButton>
           <HeaderButton variant="yellow">
             <ShoppingCart size={22} weight="fill" />
-            <NumberCart>3</NumberCart>
+            <NumberCart>{cartQuantity || 0}</NumberCart>
           </HeaderButton>
         </HeaderButtonsContainer>
       </nav>
