@@ -1,17 +1,18 @@
 import React from 'react'
 
-import { Minus, Plus, ShoppingCart } from '@phosphor-icons/react'
+import { ShoppingCart } from '@phosphor-icons/react'
 import {
-  BoxIncrement,
   BoxPrice,
   ButtonCart,
   CardContainer,
   Description,
   Name,
+  Price,
   TagCoffee,
 } from './styles'
+import { ButtonIncrement } from '../../../../components/ButtonIncrement'
 
-export interface CoffeeProps {
+export interface Coffee {
   id: number
   tags: string[]
   name: string
@@ -20,11 +21,11 @@ export interface CoffeeProps {
   price: number
 }
 
-export interface Coffee {
-  coffee: CoffeeProps
+export interface CoffeeProps {
+  coffee: Coffee
 }
 
-export const Card = ({ coffee }: Coffee) => {
+export const Card = ({ coffee }: CoffeeProps) => {
   const [quantity, setQuantity] = React.useState(1)
 
   function handleIncrease() {
@@ -48,19 +49,15 @@ export const Card = ({ coffee }: Coffee) => {
       <Name>{coffee.name}</Name>
       <Description>{coffee.description}</Description>
       <BoxPrice>
-        <p>
+        <Price>
           <span>R$</span>
           {coffee.price}
-        </p>
-        <BoxIncrement>
-          <button onClick={handleDecrease}>
-            <Minus size={14} weight="bold" />
-          </button>
-          <input type="number" value={quantity} readOnly />
-          <button onClick={handleIncrease}>
-            <Plus size={14} weight="bold" />
-          </button>
-        </BoxIncrement>
+        </Price>
+        <ButtonIncrement
+          onIncrease={handleIncrease}
+          onDecrease={handleDecrease}
+          quantity={quantity}
+        />
         <ButtonCart>
           <ShoppingCart size={22} weight="fill" />
         </ButtonCart>

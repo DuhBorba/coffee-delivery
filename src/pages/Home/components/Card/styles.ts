@@ -50,60 +50,21 @@ export const BoxPrice = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`
 
-  p {
-    font-family: ${(props) => props.theme.fonts.title};
-    font-size: ${(props) => props.theme.text['title-m']};
-    color: ${(props) => props.theme.colors['base-text']};
-    font-weight: 800;
-    span {
-      font-family: ${(props) => props.theme.fonts.regular};
-      font-size: ${(props) => props.theme.text['regular-s']};
-      font-weight: 400;
-      margin-right: 0.125rem;
-    }
+export const Price = styled.p`
+  font-family: ${(props) => props.theme.fonts.title};
+  font-size: ${(props) => props.theme.text['title-m']};
+  color: ${(props) => props.theme.colors['base-text']};
+  font-weight: 800;
+  span {
+    font-family: ${(props) => props.theme.fonts.regular};
+    font-size: ${(props) => props.theme.text['regular-s']};
+    font-weight: 400;
+    margin-right: 0.125rem;
   }
 `
 
-export const BoxIncrement = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: ${(props) => props.theme.colors['base-button']};
-  padding: 0.5rem;
-  gap: 0.25rem;
-  border-radius: 6px;
-  margin: 0 0.5rem 0 1.5rem;
-  max-width: 75px;
-  height: 2.25rem;
-
-  input {
-    width: 100%;
-    border: 0;
-    background: none;
-    text-align: center;
-    &:focus {
-      box-shadow: unset;
-    }
-  }
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  input[type='number'] {
-    -moz-appearance: textfield;
-  }
-
-  button {
-    background: none;
-    border: none;
-    color: ${(props) => props.theme.colors.purple};
-    &:focus {
-      box-shadow: unset;
-    }
-  }
-`
 export const ButtonCart = styled.button`
   display: flex;
   justify-content: center;
