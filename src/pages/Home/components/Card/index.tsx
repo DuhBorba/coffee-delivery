@@ -12,6 +12,7 @@ import {
 } from './styles'
 import { ButtonIncrement } from '../../../../components/ButtonIncrement'
 import { useCart } from '../../../../hooks/useCart'
+import { formatMoney } from '../../../../utils/formatMoney'
 
 export interface Coffee {
   id: number
@@ -63,7 +64,7 @@ export const Card = ({ coffee }: CoffeeProps) => {
       <BoxPrice>
         <Price>
           <span>R$</span>
-          {coffee.price}
+          {formatMoney(coffee.price)}
         </Price>
         <ButtonIncrement
           onIncrease={handleIncrease}

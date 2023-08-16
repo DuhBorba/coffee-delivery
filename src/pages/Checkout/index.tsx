@@ -3,37 +3,32 @@ import {
   CreditCard,
   CurrencyDollar,
   MapPinLine,
-  Minus,
   Money,
-  Plus,
-  Trash,
 } from '@phosphor-icons/react'
 import { TextRegular, TextTitle } from '../../components/Typography'
 import {
   BoxButtonPayment,
   BoxConfirm,
   BoxForm,
-  BoxImageCoffee,
-  BoxIncrementRemove,
-  BoxRemove,
   BoxTotal,
   ButtonConfirm,
   ButtonPayment,
-  ButtonRemove,
   CardConfirm,
   CardForm,
   CardPayment,
   CheckoutContainer,
-  CoffeeCard,
   FormInputs,
   InputBox,
   Line,
   SubtitleIcon,
 } from './styles'
 
-import Americano from '../../assets/images/americano.svg'
+import { useCart } from '../../hooks/useCart'
+import { CoffeeCheckoutCard } from './components/CoffeeCheckoutCard'
 
 export const Checkout = () => {
+  const { cartItems } = useCart()
+
   return (
     <CheckoutContainer>
       <BoxForm>
@@ -120,35 +115,12 @@ export const Checkout = () => {
           Cafés selecionados
         </TextTitle>
         <CardConfirm>
-          <CoffeeCard>
-            <BoxImageCoffee>
-              <img src={Americano} alt="" />
-            </BoxImageCoffee>
-            <div>
-              <div>
-                <TextRegular>Expresso Tradicional</TextRegular>
-              </div>
-              <BoxRemove>
-                <BoxIncrementRemove>
-                  <button>
-                    <Minus size={14} weight="bold" />
-                  </button>
-                  <input type="number" value={1} />
-                  <button>
-                    <Plus size={14} weight="bold" />
-                  </button>
-                </BoxIncrementRemove>
-                <ButtonRemove>
-                  <Trash size={16} /> Remover
-                </ButtonRemove>
-              </BoxRemove>
-            </div>
-            <TextRegular weight={700}>
-              <p>R$ 9,90</p>
-            </TextRegular>
-          </CoffeeCard>
-
-          <Line />
+          {cartItems.map((item) => (
+            <>
+              <CoffeeCheckoutCard key={item.id} coffee={item} />
+              <Line />
+            </>
+          ))}
 
           <BoxTotal>
             <div>
