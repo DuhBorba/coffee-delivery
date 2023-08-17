@@ -1,16 +1,12 @@
 import React from 'react'
-import {
-  BoxImageCoffee,
-  BoxIncrementRemove,
-  BoxRemove,
-  ButtonRemove,
-  CoffeeCard,
-} from './style'
+import { BoxImageCoffee, BoxRemove, ButtonRemove, CoffeeCard } from './style'
 import { TextRegular } from '../../../../components/Typography'
-import { Minus, Plus, Trash } from '@phosphor-icons/react'
+import { Trash } from '@phosphor-icons/react'
 
 import { CartItem } from '../../../../contexts/CartContext'
 import { formatMoney } from '../../../../utils/formatMoney'
+import { ButtonIncrement } from '../../../../components/ButtonIncrement'
+import { useCart } from '../../../../hooks/useCart'
 
 interface CoffeeCheckoutCardProps {
   coffee: CartItem
@@ -20,6 +16,16 @@ export const CoffeeCheckoutCard = ({ coffee }: CoffeeCheckoutCardProps) => {
   const coffeeTotal = coffee.quantity * coffee.price
 
   const formattedPrice = formatMoney(coffeeTotal)
+
+  const { changeCartItemQuantity } = useCart()
+
+  function handleIncrease() {
+    changeCartItemQuantity(coffee.id, 'increase')
+  }
+
+  function handleDecrease() {
+    changeCartItemQuantity(coffee.id, 'decrease')
+  }
 
   return (
     <CoffeeCard>
@@ -31,15 +37,12 @@ export const CoffeeCheckoutCard = ({ coffee }: CoffeeCheckoutCardProps) => {
           <TextRegular>{coffee.name}</TextRegular>
         </div>
         <BoxRemove>
-          <BoxIncrementRemove>
-            <button>
-              <Minus size={14} weight="bold" />
-            </button>
-            <input type="number" value={coffee.quantity} />
-            <button>
-              <Plus size={14} weight="bold" />
-            </button>
-          </BoxIncrementRemove>
+          <ButtonIncrement
+            size="s"
+            onIncrease={handleIncrease}
+            onDecrease={handleDecrease}
+            quantity={coffee.quantity}
+          />
           <ButtonRemove>
             <Trash size={16} /> Remover
           </ButtonRemove>

@@ -27,46 +27,6 @@ export const BoxImageCoffee = styled.div`
   }
 `
 
-export const BoxIncrementRemove = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: ${(props) => props.theme.colors['base-button']};
-  padding: 0.5rem;
-  gap: 0.25rem;
-  border-radius: 6px;
-  margin-right: 0.5rem;
-  max-width: 75px;
-  height: 2rem;
-
-  input {
-    width: 100%;
-    border: 0;
-    background: none;
-    text-align: center;
-    &:focus {
-      box-shadow: unset;
-    }
-  }
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  input[type='number'] {
-    -moz-appearance: textfield;
-  }
-
-  button {
-    background: none;
-    border: none;
-    color: ${(props) => props.theme.colors.purple};
-    &:focus {
-      box-shadow: unset;
-    }
-  }
-`
-
 export const ButtonRemove = styled.button`
   display: flex;
   align-items: center;

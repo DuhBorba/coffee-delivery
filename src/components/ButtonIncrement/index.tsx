@@ -4,18 +4,20 @@ import { Minus, Plus } from '@phosphor-icons/react'
 import { TextRegular } from '../Typography'
 
 interface ButtonIncrementProps {
+  size: 's' | 'm'
   onIncrease: () => void
   onDecrease: () => void
   quantity: number
 }
 
 export const ButtonIncrement = ({
+  size = 'm',
   onIncrease,
   onDecrease,
   quantity,
 }: ButtonIncrementProps) => {
   return (
-    <BoxIncrement>
+    <BoxIncrement size={size}>
       <button onClick={onDecrease} disabled={quantity <= 1}>
         <Minus size={14} weight="bold" />
       </button>
