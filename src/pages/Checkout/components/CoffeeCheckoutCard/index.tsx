@@ -17,7 +17,7 @@ export const CoffeeCheckoutCard = ({ coffee }: CoffeeCheckoutCardProps) => {
 
   const formattedPrice = formatMoney(coffeeTotal)
 
-  const { changeCartItemQuantity } = useCart()
+  const { changeCartItemQuantity, removeCartItem } = useCart()
 
   function handleIncrease() {
     changeCartItemQuantity(coffee.id, 'increase')
@@ -25,6 +25,10 @@ export const CoffeeCheckoutCard = ({ coffee }: CoffeeCheckoutCardProps) => {
 
   function handleDecrease() {
     changeCartItemQuantity(coffee.id, 'decrease')
+  }
+
+  function handleRemove() {
+    removeCartItem(coffee.id)
   }
 
   return (
@@ -43,7 +47,7 @@ export const CoffeeCheckoutCard = ({ coffee }: CoffeeCheckoutCardProps) => {
             onDecrease={handleDecrease}
             quantity={coffee.quantity}
           />
-          <ButtonRemove>
+          <ButtonRemove onClick={handleRemove}>
             <Trash size={16} /> Remover
           </ButtonRemove>
         </BoxRemove>
