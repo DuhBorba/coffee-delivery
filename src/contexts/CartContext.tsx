@@ -22,10 +22,18 @@ interface CartContextProviderProps {
   children: ReactNode
 }
 
+const COFFEE_ITEMS_STORAGE_KEY = 'coffeeDelivery:cartItems'
+
 export const CartContext = React.createContext({} as CartContextType)
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [cartItems, setCartItems] = React.useState<CartItem[]>([])
+  const [cartItems, setCartItems] = React.useState<CartItem[]>(() => {
+    const storagedCartItems = localStorage.getItem(COFFEE_ITEMS_STORAGE_KEY)
+    if (storagedCartItems) {
+      return JSON.parse(storagedCartItems)
+    }
+    return []
+  })
 
   function addCoffeeToCart(coffee: CartItem) {
     const coffeeExistsCart = cartItems.findIndex(
@@ -83,6 +91,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
 
     setCartItems(newCoffeeCart)
   }
+
+  React.useEffect(() => {
+    localStorage.setItem(COFFEE_ITEMS_STORAGE_KEY, JSON.stringify(cartItems))
+  }, [cartItems])
 
   return (
     <CartContext.Provider
