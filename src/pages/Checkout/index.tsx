@@ -10,8 +10,6 @@ import {
   BoxButtonPayment,
   BoxConfirm,
   BoxForm,
-  BoxTotal,
-  ButtonConfirm,
   ButtonPayment,
   CardConfirm,
   CardForm,
@@ -25,6 +23,7 @@ import {
 
 import { useCart } from '../../hooks/useCart'
 import { CoffeeCheckoutCard } from './components/CoffeeCheckoutCard'
+import { BoxTotalPrice } from './components/BoxTotalPrice'
 
 export const Checkout = () => {
   const { cartItems } = useCart()
@@ -122,35 +121,7 @@ export const Checkout = () => {
             </>
           ))}
 
-          <BoxTotal>
-            <div>
-              <TextRegular size="s">Total de itens</TextRegular>
-            </div>
-            <div>
-              <TextRegular>R$ 29,70</TextRegular>
-            </div>
-          </BoxTotal>
-          <BoxTotal>
-            <div>
-              <TextRegular size="s">Entrega</TextRegular>
-            </div>
-            <div>
-              <TextRegular>R$ 3,50</TextRegular>
-            </div>
-          </BoxTotal>
-          <BoxTotal>
-            <div>
-              <TextRegular size="l" weight={700}>
-                Total
-              </TextRegular>
-            </div>
-            <div>
-              <TextRegular size="l" weight={700}>
-                R$ 33,20
-              </TextRegular>
-            </div>
-          </BoxTotal>
-          <ButtonConfirm>Confirmar Pedido</ButtonConfirm>
+          <BoxTotalPrice />
         </CardConfirm>
       </BoxConfirm>
     </CheckoutContainer>
