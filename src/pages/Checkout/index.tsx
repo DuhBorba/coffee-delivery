@@ -29,7 +29,7 @@ import { BoxTotalPrice } from './components/BoxTotalPrice'
 import { BoxInputs } from './components/BoxInputs'
 
 const formValidationSchema = zod.object({
-  cep: zod.string(),
+  cep: zod.string().min(1, 'Informe o CEP'),
 })
 
 export type OrderData = zod.infer<typeof formValidationSchema>

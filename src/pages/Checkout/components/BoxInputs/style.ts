@@ -39,14 +39,4 @@ export const InputBox = styled.div`
     border-radius: 4px;
     border: 1px solid ${(props) => props.theme.colors['base-button']};
   }
-
-  input {
-    font-size: ${(props) => props.theme.text['regular-s']};
-    color: ${(props) => props.theme.colors['base-label']};
-    background: transparent;
-    border: none;
-    height: 2.625rem;
-    width: 100%;
-    padding: 0 0.75rem;
-  }
 `

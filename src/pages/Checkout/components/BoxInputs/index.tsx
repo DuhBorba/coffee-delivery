@@ -1,6 +1,7 @@
 import React from 'react'
 import { InputBox } from './style'
 import { useFormContext } from 'react-hook-form'
+import { Input } from '../Input'
 
 export const BoxInputs = () => {
   const { register } = useFormContext()
@@ -9,32 +10,37 @@ export const BoxInputs = () => {
     <>
       <InputBox>
         <div>
-          <input type="text" placeholder="CEP" {...register('cep')} />
+          <Input
+            placeholder="CEP"
+            type="number"
+            className="cep"
+            {...register('cep')}
+          />
         </div>
       </InputBox>
       <InputBox>
         <div className="street">
-          <input type="text" placeholder="Rua" />
+          <Input type="text" placeholder="Rua" />
         </div>
       </InputBox>
       <InputBox>
         <div>
-          <input type="text" placeholder="Número" />
+          <Input type="text" placeholder="Número" />
         </div>
         <div className="complement">
-          <input type="text" placeholder="Complemento" />
+          <Input type="text" placeholder="Complemento" />
           <p>Opcional</p>
         </div>
       </InputBox>
       <InputBox>
         <div>
-          <input type="text" placeholder="Bairro" />
+          <Input type="text" placeholder="Bairro" />
         </div>
         <div className="city">
-          <input type="text" placeholder="Cidade" />
+          <Input type="text" placeholder="Cidade" />
         </div>
         <div className="uf">
-          <input type="text" placeholder="UF" />
+          <Input type="text" placeholder="UF" />
         </div>
       </InputBox>
     </>
