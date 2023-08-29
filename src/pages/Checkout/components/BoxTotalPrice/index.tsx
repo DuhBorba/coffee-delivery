@@ -44,7 +44,7 @@ export const BoxTotalPrice = () => {
           </TextRegular>
         </div>
       </BoxTotal>
-      <ButtonConfirm disabled={cartQuantity <= 0}>
+      <ButtonConfirm disabled={cartQuantity <= 0} type="submit">
         Confirmar Pedido
       </ButtonConfirm>
     </>

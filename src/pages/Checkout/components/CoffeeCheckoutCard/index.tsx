@@ -1,5 +1,11 @@
 import React from 'react'
-import { BoxImageCoffee, BoxRemove, ButtonRemove, CoffeeCard } from './style'
+import {
+  BoxImageCoffee,
+  BoxRemove,
+  ButtonRemove,
+  CoffeeCard,
+  Line,
+} from './style'
 import { TextRegular } from '../../../../components/Typography'
 import { Trash } from '@phosphor-icons/react'
 
@@ -32,29 +38,32 @@ export const CoffeeCheckoutCard = ({ coffee }: CoffeeCheckoutCardProps) => {
   }
 
   return (
-    <CoffeeCard>
-      <BoxImageCoffee>
-        <img src={`/images/${coffee.image}`} alt="" />
-      </BoxImageCoffee>
-      <div>
+    <>
+      <CoffeeCard>
+        <BoxImageCoffee>
+          <img src={`/images/${coffee.image}`} alt="" />
+        </BoxImageCoffee>
         <div>
-          <TextRegular>{coffee.name}</TextRegular>
+          <div>
+            <TextRegular>{coffee.name}</TextRegular>
+          </div>
+          <BoxRemove>
+            <ButtonIncrement
+              size="s"
+              onIncrease={handleIncrease}
+              onDecrease={handleDecrease}
+              quantity={coffee.quantity}
+            />
+            <ButtonRemove onClick={handleRemove}>
+              <Trash size={16} /> Remover
+            </ButtonRemove>
+          </BoxRemove>
         </div>
-        <BoxRemove>
-          <ButtonIncrement
-            size="s"
-            onIncrease={handleIncrease}
-            onDecrease={handleDecrease}
-            quantity={coffee.quantity}
-          />
-          <ButtonRemove onClick={handleRemove}>
-            <Trash size={16} /> Remover
-          </ButtonRemove>
-        </BoxRemove>
-      </div>
-      <TextRegular weight={700}>
-        <p>R$ {formattedPrice}</p>
-      </TextRegular>
-    </CoffeeCard>
+        <TextRegular weight={700}>
+          <p>R$ {formattedPrice}</p>
+        </TextRegular>
+      </CoffeeCard>
+      <Line />
+    </>
   )
 }

@@ -57,3 +57,11 @@ export const ButtonRemove = styled.button`
     border: 1px solid ${(props) => props.theme.colors.purple};
   }
 `
+
+export const Line = styled.span`
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: ${(props) => props.theme.colors['base-button']};
+  margin: 1.5rem 0;
+`
