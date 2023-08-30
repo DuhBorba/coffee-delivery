@@ -1,16 +1,8 @@
-import {
-  Bank,
-  CreditCard,
-  CurrencyDollar,
-  MapPinLine,
-  Money,
-} from '@phosphor-icons/react'
+import { CurrencyDollar, MapPinLine } from '@phosphor-icons/react'
 import { TextRegular, TextTitle } from '../../components/Typography'
 import {
-  BoxButtonPayment,
   BoxConfirm,
   BoxForm,
-  ButtonPayment,
   CardConfirm,
   CardForm,
   CardPayment,
@@ -27,6 +19,13 @@ import { useCart } from '../../hooks/useCart'
 import { CoffeeCheckoutCard } from './components/CoffeeCheckoutCard'
 import { BoxTotalPrice } from './components/BoxTotalPrice'
 import { BoxInputs } from './components/BoxInputs'
+import { BoxPayment } from './components/BoxPayment'
+
+enum PaymentMethods {
+  credit = 'credit',
+  debit = 'debit',
+  money = 'money',
+}
 
 const formValidationSchema = zod.object({
   cep: zod.string().min(1, 'Informe o CEP'),
@@ -36,6 +35,11 @@ const formValidationSchema = zod.object({
   district: zod.string().min(1, 'Informe o Bairro'),
   city: zod.string().min(1, 'Informe a Cidade'),
   uf: zod.string().min(1, 'Informe a UF'),
+  paymentMethod: zod.nativeEnum(PaymentMethods, {
+    errorMap: () => {
+      return { message: 'Informe o método de pagamento' }
+    },
+  }),
 })
 
 export type OrderData = zod.infer<typeof formValidationSchema>
@@ -94,20 +98,8 @@ export const Checkout = () => {
                 </TextRegular>
               </div>
             </SubtitleIcon>
-            <BoxButtonPayment>
-              <ButtonPayment>
-                <CreditCard size={16} />
-                Cartão de crédito
-              </ButtonPayment>
-              <ButtonPayment>
-                <Bank size={16} />
-                Cartão de débito
-              </ButtonPayment>
-              <ButtonPayment>
-                <Money size={16} />
-                Dinheiro
-              </ButtonPayment>
-            </BoxButtonPayment>
+
+            <BoxPayment />
           </CardPayment>
         </BoxForm>
         <BoxConfirm>
