@@ -4,8 +4,28 @@ import CoffeeDeliverySuccess from '../../assets/images/coffee-delivery-success.s
 import { TextRegular, TextTitle } from '../../components/Typography'
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react'
 import { IconsContainer } from '../Home/styles'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { OrderData } from '../Checkout'
+import { paymentMethods } from '../Checkout/components/BoxPayment'
+import { useEffect } from 'react'
+
+interface LocationType {
+  state: OrderData
+}
 
 export const Success = () => {
+  const { state } = useLocation() as unknown as LocationType
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!state) {
+      navigate('/')
+    }
+  }, [])
+
+  if (!state) return <></>
+
   return (
     <BoxSuccess>
       <div>
@@ -22,9 +42,14 @@ export const Success = () => {
             </IconsContainer>
             <div>
               <TextRegular>
-                Entrega em <span>Rua João Daniel Martinelli, 102</span>
+                Entrega em{' '}
+                <span>
+                  {state.street}, {state.number}
+                </span>
               </TextRegular>
-              <TextRegular>Farrapos - Porto Alegre, RS</TextRegular>
+              <TextRegular>
+                {state.district} - {state.city}, {state.uf}
+              </TextRegular>
             </div>
           </BoxAwaiting>
           <BoxAwaiting>
@@ -45,7 +70,7 @@ export const Success = () => {
             <div>
               <TextRegular>Pagamento na entrega</TextRegular>
               <TextRegular>
-                <span>Cartão de Crédito</span>
+                <span>{paymentMethods[state.paymentMethod].label}</span>
               </TextRegular>
             </div>
           </BoxAwaiting>

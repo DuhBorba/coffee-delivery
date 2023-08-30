@@ -20,6 +20,7 @@ import { CoffeeCheckoutCard } from './components/CoffeeCheckoutCard'
 import { BoxTotalPrice } from './components/BoxTotalPrice'
 import { BoxInputs } from './components/BoxInputs'
 import { BoxPayment } from './components/BoxPayment'
+import { useNavigate } from 'react-router-dom'
 
 enum PaymentMethods {
   credit = 'credit',
@@ -55,8 +56,14 @@ export const Checkout = () => {
 
   const { handleSubmit } = confirmOrderForm
 
+  const navigate = useNavigate()
+  const { cleanCart } = useCart()
+
   function handleConfirmOrder(data: ConfirmOrderFormData) {
-    console.log(data)
+    navigate('/success', {
+      state: data,
+    })
+    cleanCart()
   }
 
   return (

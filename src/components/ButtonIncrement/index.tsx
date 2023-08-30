@@ -18,11 +18,11 @@ export const ButtonIncrement = ({
 }: ButtonIncrementProps) => {
   return (
     <BoxIncrement size={size}>
-      <button onClick={onDecrease} disabled={quantity <= 1}>
+      <button type="button" onClick={onDecrease} disabled={quantity <= 1}>
         <Minus size={14} weight="bold" />
       </button>
       <TextRegular>{quantity}</TextRegular>
-      <button onClick={onIncrease}>
+      <button type="button" onClick={onIncrease}>
         <Plus size={14} weight="bold" />
       </button>
     </BoxIncrement>
