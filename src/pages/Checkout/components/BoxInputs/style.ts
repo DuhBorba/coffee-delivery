@@ -15,11 +15,20 @@ export const InputBox = styled.div`
   }
 
   .complement {
+    position: relative;
     display: flex;
-    align-items: center;
     flex: 2 1 0;
+    width: 100%;
+
+    input {
+      padding-right: 80px;
+    }
+
     p {
-      margin-right: 0.75rem;
+      position: absolute;
+      top: 14px;
+      right: 10px;
+
       font-style: italic;
       color: ${(props) => props.theme.colors['base-label']};
       font-size: ${(props) => props.theme.text['regular-xs']};
@@ -32,11 +41,5 @@ export const InputBox = styled.div`
 
   .uf {
     flex: 0.4 1 0;
-  }
-
-  div {
-    background: ${(props) => props.theme.colors['base-input']};
-    border-radius: 4px;
-    border: 1px solid ${(props) => props.theme.colors['base-button']};
   }
 `
