@@ -59,9 +59,7 @@ export const CoffeeCheckoutCard = ({ coffee }: CoffeeCheckoutCardProps) => {
             </ButtonRemove>
           </BoxRemove>
         </div>
-        <TextRegular weight={700}>
-          <p>R$ {formattedPrice}</p>
-        </TextRegular>
+        <TextRegular weight={700}>R$ {formattedPrice}</TextRegular>
       </CoffeeCard>
       <Line />
     </>
